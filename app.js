@@ -8,7 +8,6 @@ function verificarIntento(){
     let number = parseInt(document.getElementById('numberInput').value);
     if(isNaN(number)){
         asingarTextoElemento('p', 'Solo se permiten números.');
-        
     }else if(number<1 || number>10){
         asingarTextoElemento('p', `Solo se permiten números de 1 a ${numeroMaximo}`);
     }else if(number === numeroSecreto){
