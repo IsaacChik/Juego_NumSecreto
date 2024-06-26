@@ -8,8 +8,10 @@ function verificarIntento(){
     let number = parseInt(document.getElementById('numberInput').value);
     if(isNaN(number)){
         asingarTextoElemento('p', 'Solo se permiten números.');
+        limpiarCaja();
     }else if(number<1 || number>10){
         asingarTextoElemento('p', `Solo se permiten números de 1 a ${numeroMaximo}`);
+        limpiarCaja();
     }else if(number === numeroSecreto){
         asingarTextoElemento('p', `Acertaste el número en ${intentos} ${(intentos===1)?'intento, wow!' :  'intentos.'}`);
         document.getElementById('reiniciar').removeAttribute('disabled');
@@ -59,4 +61,9 @@ function limpiarCaja(){
     document.querySelector('#numberInput'). value = '';
 }
 
-
+document.getElementById('numberInput').addEventListener('keydown', function(event){
+    if(event.key === 'Enter'){
+        event.preventDefault();
+        verificarIntento();
+    }
+});
